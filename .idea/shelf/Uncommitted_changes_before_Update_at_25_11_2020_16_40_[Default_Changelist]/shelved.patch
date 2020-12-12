@@ -1,0 +1,144 @@
+Index: app/view/templates/detail.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Title</title>\r\n</head>\r\n<body>\r\n\r\n{{ currentcode }}\r\n\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/view/templates/detail.html	(revision f591fc9a9946693a12c1ff8e4180879b622d773b)
++++ app/view/templates/detail.html	(date 1606295767949)
+@@ -6,7 +6,7 @@
+ </head>
+ <body>
+ 
+-{{ currentcode }}
++
+ 
+ </body>
+ </html>
+\ No newline at end of file
+Index: app/view/templates/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"./app/view/content/all.css\">\r\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"./app/view/content/code.css\">\r\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\r\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js\"></script>\r\n    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js\"></script>\r\n    <title>Home page</title>\r\n    <script src=\"./app/view/content/main.js\"></script>\r\n</head>\r\n<body class = \"body_homepage\">\r\n\r\n<nav class=\"navbar navbar-expand-md navbar-light bg-light\">\r\n    <a class=\"navbar-brand\">\r\n        <span class=\"menu-collapsed\">My Classroom</span>\r\n    </a>\r\n    <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarAdmin\" aria-controls=\"navbarAdmin\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n\r\n\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarAdmin\">\r\n\r\n        <ul class=\"nav navbar-nav navbar-right \">\r\n            <li class=\"nav-item dropdown d-sm-block d-lg\">\r\n                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"smallerscreenmenu\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"> Menu </a>\r\n                <div class=\"dropdown-menu\" aria-labelledby=\"smallerscreenmenu\">\r\n                    <a class=\"dropdown-item\" href=\"account/profile\">Profile</a>\r\n                    <a class=\"dropdown-item\" href=\"#top\">Settings</a>\r\n                </div>\r\n            </li>\r\n        </ul>\r\n\r\n        {% if type == 0 %}\r\n        <ul class=\"nav navbar-nav navbar-right \" class=\"joinclass\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"#\" id =\"myBtn\">Join</a>\r\n                <!-- The Modal -->\r\n                <div class=\"modal fade\" id=\"myModal\">\r\n                    <div class=\"modal-dialog\">\r\n                        <div class=\"modal-content\">\r\n                            <!-- Modal Header -->\r\n                            <div class=\"modal-header\">\r\n                                <h4 class=\"modal-title\">Join Class</h4>\r\n                            </div>\r\n\r\n                            <!-- Modal body -->\r\n                            <div class=\"modal-body\">\r\n                                <p>Ask your teacher for the class code, then enter it here.</p>\r\n                                <form class=\"join_code\" method=\"post\" action=\"subject/join_code\">\r\n\r\n                                    <input type=\"text\" class=\"form-control\" placeholder=\"Enter join code\" name=\"join_code\">\r\n                                    <button type=\"submit\" class=\"btn btn-primary button-join-class\" name=\"join\">Join</button>\r\n                                </form>\r\n\r\n                            </div>\r\n\r\n                            <!-- Modal footer -->\r\n                            <div class=\"modal-footer\">\r\n                                <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Close</button>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </li>\r\n        </ul>\r\n        {% elseif type == 1 %}\r\n        <ul class=\"nav navbar-nav navbar-right \">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" id =\"myBtnaddnewclass\">Add New Class</a>\r\n                <!-- The Modal -->\r\n                <div class=\"modal fade\" id=\"myModaladdnewclass\">\r\n                    <div class=\"modal-dialog\">\r\n                        <div class=\"modal-content\">\r\n                            <div class=\"modal-header\">\r\n                                <h4 class=\"modal-title\">Add New Class</h4>\r\n                            </div>\r\n\r\n                            <div class=\"modal-body\">\r\n                                <form method=\"post\" action=\"subject/add_subject\">\r\n                                    <label>Class Name</label>\r\n                                    <input type=\"text\" class=\"form-control\" placeholder=\"Enter your class name\" name=\"classname\">\r\n                                    <label>Subject Name</label>\r\n                                    <input type=\"text\" class=\"form-control\" placeholder=\"Enter your subject name\" name=\"subjectname\">\r\n                                    <label>Room</label>\r\n                                    <input type=\"text\" class=\"form-control\" placeholder=\"Enter your class room\" name=\"room\">\r\n                                    <div class=\"modal-footer\">\r\n                                        <button type=\"submit\" class=\"btn btn-primary button-addnewclass\" name=\"addnewclass\" id=\"addnewclass\">Add</button>\r\n                                        <button type=\"button\" class=\"btn btn-danger button-cancle\" data-dismiss=\"modal\">Close</button>\r\n                                    </div>\r\n                                </form>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </li>\r\n        </ul>\r\n        {% endif %}\r\n\r\n        <ul class=\"navbar-nav ml-auto\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" href=\"account/logout\"> Log out</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</nav>\r\n\r\n<div class=\"alert alert-dark alert-dismissible error_index\" role=\"alert\">\r\n    <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>\r\n    {{ errorindex }}\r\n</div>\r\n\r\n<div class=\"container-fluid\">\r\n    <div class=\"row justify-content-center\">\r\n       {% for i in subject.data %}\r\n        <div class=\"col-md-3 col-sm-6 col-xs-12 row-container\">\r\n            <form action=\"subject/detail\" method=\"post\">\r\n                <div class=\"subject_homepage\">\r\n                    <div class=\"textsubject_homepage\">\r\n                        <input class=\"currentcode\" name=\"currentcode\" id=\"currentcode\" value=\"{{ i.code }}\">\r\n                        <p>Tên lớp: {{ i.classname }}</p>\r\n                        <p>Môn học: {{ i.subjectname }}</p>\r\n                        <p>Giáo viên: {{ i.teachername }}</p>\r\n                        <p>Phòng học: {{ i.room }}</p>\r\n                    </div>\r\n                    <p> </p><br>\r\n                    <p> </p><br>\r\n                    <p> </p><br>\r\n                    <div class=\"btn_join_into_class\">\r\n                        <button type=\"submit\" class=\"btn btn-primary\" name=\"joinintoclass\" id=\"joinintoclass\">Join Class</button>\r\n                    </div>\r\n\r\n                </div>\r\n            </form>\r\n        </div>\r\n        {% endfor %}\r\n    </div>\r\n</div>\r\n\r\n\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/view/templates/index.html	(revision f591fc9a9946693a12c1ff8e4180879b622d773b)
++++ app/view/templates/index.html	(date 1606297173821)
+@@ -6,6 +6,7 @@
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="./app/view/content/all.css">
+     <link rel="stylesheet" type="text/css" href="./app/view/content/code.css">
++    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+@@ -133,7 +134,8 @@
+                     <p> </p><br>
+                     <p> </p><br>
+                     <div class="btn_join_into_class">
+-                        <button type="submit" class="btn btn-primary" name="joinintoclass" id="joinintoclass">Join Class</button>
++                        <button type="submit" class="btn btn-primary" name="joinintoclass" id="joinintoclass">
++                            <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>  Join Class </button>
+                     </div>
+ 
+                 </div>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"37019a64-43c3-4573-98e9-aef5311ad553\" name=\"Default Changelist\" comment=\"profile\">\r\n      <change afterPath=\"$PROJECT_DIR$/app/view/templates/profile.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\" doNotAsk=\"true\" synchronizationState=\"SYNCHRONIZE\">\r\n    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"PhpWorkspaceProjectConfiguration\">\r\n    <include_path>\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-ctype\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/symfony/polyfill-mbstring\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/twig/twig\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/composer\" />\r\n      <path value=\"$PROJECT_DIR$/vendor/phpmailer/phpmailer\" />\r\n    </include_path>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1kgtXF7AuvgcHw8taAjllHivx45\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"list.type.of.created.stylesheet\" value=\"CSS\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"php.override.implement.member.chooser.php.doc\" value=\"NONE\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.lookFeel\" />\r\n    <property name=\"vue.rearranger.settings.migration\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\xampp\\htdocs\\Final\\app\\view\\templates\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"37019a64-43c3-4573-98e9-aef5311ad553\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1606134101351</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1606134101351</updated>\r\n      <workItem from=\"1606134103465\" duration=\"2935000\" />\r\n      <workItem from=\"1606230116455\" duration=\"5102000\" />\r\n      <workItem from=\"1606283816871\" duration=\"69000\" />\r\n      <workItem from=\"1606283888212\" duration=\"545000\" />\r\n      <workItem from=\"1606284699681\" duration=\"375000\" />\r\n      <workItem from=\"1606285084270\" duration=\"2502000\" />\r\n      <workItem from=\"1606287603731\" duration=\"924000\" />\r\n      <workItem from=\"1606288983465\" duration=\"51000\" />\r\n      <workItem from=\"1606289716379\" duration=\"2753000\" />\r\n      <workItem from=\"1606292514938\" duration=\"154000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"test\">\r\n      <created>1606289379352</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606289379352</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"test\">\r\n      <created>1606289941202</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606289941202</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"profile\">\r\n      <created>1606292087368</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606292087368</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"profile\">\r\n      <created>1606292548801</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606292548801</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"test\" />\r\n    <MESSAGE value=\"profile\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"profile\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"574\" y=\"114\" key=\"#com.intellij.ide.util.MemberChooser\" timestamp=\"1606286233521\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"574\" y=\"114\" key=\"#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864\" timestamp=\"1606286233521\" />\r\n    <state x=\"549\" y=\"187\" key=\"FileChooserDialogImpl\" timestamp=\"1606283884876\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"549\" y=\"187\" key=\"FileChooserDialogImpl/0.0.1536.864@0.0.1536.864\" timestamp=\"1606283884876\" />\r\n    <state x=\"604\" y=\"356\" key=\"NewPhpFileDialog\" timestamp=\"1606285631729\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"604\" y=\"356\" key=\"NewPhpFileDialog/0.0.1536.864@0.0.1536.864\" timestamp=\"1606285631729\" />\r\n    <state x=\"277\" y=\"77\" key=\"SettingsEditor\" timestamp=\"1606234925272\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"277\" y=\"77\" key=\"SettingsEditor/0.0.1536.864@0.0.1536.864\" timestamp=\"1606234925272\" />\r\n    <state x=\"361\" y=\"165\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1606292554378\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"361\" y=\"165\" key=\"Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864\" timestamp=\"1606292554378\" />\r\n    <state x=\"586\" y=\"346\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2\" timestamp=\"1606292540456\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"864\" />\r\n    </state>\r\n    <state x=\"586\" y=\"346\" key=\"com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864\" timestamp=\"1606292540456\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision f591fc9a9946693a12c1ff8e4180879b622d773b)
++++ .idea/workspace.xml	(date 1606296740058)
+@@ -10,8 +10,10 @@
+     <select />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="37019a64-43c3-4573-98e9-aef5311ad553" name="Default Changelist" comment="profile">
+-      <change afterPath="$PROJECT_DIR$/app/view/templates/profile.html" afterDir="false" />
++    <list default="true" id="37019a64-43c3-4573-98e9-aef5311ad553" name="Default Changelist" comment="test">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/view/templates/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/templates/detail.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app/view/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/templates/index.html" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -26,8 +28,8 @@
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="JavaScript File" />
+-        <option value="CSS File" />
+         <option value="HTML File" />
++        <option value="CSS File" />
+       </list>
+     </option>
+   </component>
+@@ -87,8 +89,7 @@
+       <workItem from="1606285084270" duration="2502000" />
+       <workItem from="1606287603731" duration="924000" />
+       <workItem from="1606288983465" duration="51000" />
+-      <workItem from="1606289716379" duration="2753000" />
+-      <workItem from="1606292514938" duration="154000" />
++      <workItem from="1606289716379" duration="2308000" />
+     </task>
+     <task id="LOCAL-00001" summary="test">
+       <created>1606289379352</created>
+@@ -104,21 +105,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1606289941202</updated>
+     </task>
+-    <task id="LOCAL-00003" summary="profile">
+-      <created>1606292087368</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1606292087368</updated>
+-    </task>
+-    <task id="LOCAL-00004" summary="profile">
+-      <created>1606292548801</created>
+-      <option name="number" value="00004" />
+-      <option name="presentableId" value="LOCAL-00004" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1606292548801</updated>
+-    </task>
+-    <option name="localTasksCounter" value="5" />
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -138,8 +125,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="test" />
+-    <MESSAGE value="profile" />
+-    <option name="LAST_COMMIT_MESSAGE" value="profile" />
++    <option name="LAST_COMMIT_MESSAGE" value="test" />
+   </component>
+   <component name="WindowStateProjectService">
+     <state x="574" y="114" key="#com.intellij.ide.util.MemberChooser" timestamp="1606286233521">
+@@ -158,13 +144,17 @@
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+     <state x="277" y="77" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1606234925272" />
+-    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1606292554378">
++    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1606289943972">
++      <screen x="0" y="0" width="1536" height="864" />
++    </state>
++    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1606289943972" />
++    <state x="586" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606289663493">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1606292554378" />
+-    <state x="586" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606292540456">
++    <state x="586" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1606289663493" />
++    <state x="424" y="197" key="run.anything.popup" timestamp="1606293147122">
+       <screen x="0" y="0" width="1536" height="864" />
+     </state>
+-    <state x="586" y="346" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.864@0.0.1536.864" timestamp="1606292540456" />
++    <state x="424" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1606293147122" />
+   </component>
+ </project>
+\ No newline at end of file

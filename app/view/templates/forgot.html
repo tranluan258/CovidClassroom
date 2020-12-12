@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Forgotpassword</title>
+</head>
+<body class = "body_forgotpassword">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-sm-10 col-xs-10 row-container_forgotpassword">
+                <div class="text_note_forgot_password">Nhập Email đã đăng ký để đổi mật khẩu</div>
+                <form class="forgot_password" action="" method="post">
+                    <input type="email" class="form-control box_email_forgot" name="email_forgot" placeholder="Enter email . . .">
+                    <button type="submit" class="btn btn-success button_send_email_forgot" name="button_send_email_forgot">Send</button>
+                </form>
+                <div class="text_note2_forgot_password">Các bước khôi phục mật khẩu:</div>
+                <ol class="text_note3_forgot_password">
+                    <li>Nhập email đã đăng ký để nhận mail khôi phục</li>
+                    <li>Kiểm tra mail</li>
+                    <li>Nhấn link khôi phục</li>
+                    <li>Tiến hành đổi mật khẩu</li>
+                </ol>
+
+                <p>{{ error }}</p>
+                
+            </div>
+        </div>
+    </div>
+        
+</body>
+</html>

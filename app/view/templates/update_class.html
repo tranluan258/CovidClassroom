@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Update Class</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand">
+        <span class="menu-collapsed">Covid Classroom</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarAdmin">
+
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" href="../"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" href="detail"><i class="fa fa-reply" aria-hidden="true"></i>  Back</a>
+            </li>
+        </ul>
+        <!-- Log out -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../account/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="editinfroclass">
+    <form action="update_class_info" method="post">
+        <h2 class="titleeditclass">Chinh sua thong tin lop hoc</h2>
+        <div class="editclassrow">
+            <div class="editclass25">
+                <label class="labeleditclass" for="fname">Class name</label>
+            </div>
+            <div class="editclass75">
+                <textarea id="fname" name="update_class_name">{{ subject.data[0].classname }}</textarea>
+            </div>
+        </div>
+        <div class="editclassrow">
+            <div class="editclass25">
+                <label class="labeleditclass" for="lname">Subject Name</label>
+            </div>
+            <div class="editclass75">
+                <textarea id="lname" name="update_class_subject">{{ subject.data[0].subjectname }}</textarea>
+            </div>
+        </div>
+        <div class="editclassrow">
+            <div class="editclass25">
+                <label class="labeleditclass" for="rname">Room</label>
+            </div>
+            <div class="editclass75">
+                <textarea id="rname" name="update_class_room">{{ subject.data[0].room }}</textarea>
+            </div>
+        </div>
+        <br>
+        <div class="editclassrow editclassrowsave">
+            <button class="btn btn-success" type="submit" name="btn_update_class">Save</button>
+        </div>
+    </form>
+</div>
+
+</body>
+
+</html>

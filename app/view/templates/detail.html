@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Subject</title>
+    <script src="../main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body class = "body_detailsubject">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand">
+        <span class="menu-collapsed">Covid Classroom</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse so123" id="navbarAdmin">
+
+        <ul class="nav navbar-nav navbar-right so1">
+            <li class="nav-item">
+                <a class="nav-link" href="../">Home</a>
+            </li>
+        </ul>
+
+        <ul class="nav nav-tabs navbar-right so2">
+            <li class="nav-item so21">
+                <a class="nav-link active" data-toggle="tab" href="#stream">Stream</a>
+            </li>
+
+
+
+
+            <li class="nav-item so22">
+                <a class="nav-link" data-toggle="tab" href="#classwork">Classwork</a>
+            </li>
+
+
+            <li class="nav-item so23">
+                <a class="nav-link" data-toggle="tab" href="#people">People</a>
+            </li>
+
+
+            <li class="nav-item so24">
+                <a class="nav-link" data-toggle="tab" href="#files">Files</a>
+            </li>
+
+            <!-- Dropdown -->
+
+        </ul>
+
+        <!-- Log out -->
+        <ul class="nav navbar-nav ml-auto so3">
+            <li class="nav-item dropdown d-sm-block d-lg so23">
+                <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Menu </a>
+                <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                    {% if type != 0 %}
+                    <form method="post" action="delete_subject">
+                        <button type="submit" class="dropdown-item" name="delete_subject">Xoá lớp học</button>
+                    </form>
+                    <a class="dropdown-item" href="update_class">Sửa thông tin lớp học</a>
+                    {% elseif type == 0 %}
+                    <form method="post" action="leave_class">
+                        <button name="leaveclass" class="dropdown-item" href=""><!--exit_to_app-->Thoát khỏi lớp học</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../account/logout">Log out</a>
+            </li>
+        </ul>
+
+
+    </div>
+</nav>
+
+<div class="alert alert-dark alert-dismissible error_index" role="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    {{ errordetail }}
+</div>
+
+<div class="noidung">
+    <div class="caihinhotren">
+        <div class="tenlophocotren">Lớp: {{ subjectinfo.data[0].classname }}</div>
+        <div class="tenmonhocogiua">Môn: {{ subjectinfo.data[0].subjectname }}</div>
+        <div class="phonghocoduoi">Phòng: {{ subjectinfo.data[0].room }}</div>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="tab-content">
+            <!-- Streams -->
+            <div id="stream" class="container tab-pane stream_stream active">
+                <ul class="list-group">
+                    <li class="list-group-item newpost">
+                        <div class="text_with_buttonpost">
+                            <form action="add_notice" method="post" enctype="multipart/form-data">
+                                <textarea type="text" class="text" oninput="auto_grow(this)" placeholder=" Share something with your class here.." name="noticeinfo"></textarea>
+                                <button type="submit" class="btn btn-success posttopdetail" name="addnotice">Post</button>
+                            </form>
+
+                        </div>
+                    </li>
+
+
+                    <li class="list-group-item">
+                        {% for i in notice.data %}
+                        {% if i.link is null %}
+                        <a href="#{{ i.username }}{{ i.idnotice }}" class="navbar-collapse card card-body body_stream_noti" data-toggle="collapse">
+                            <div class="text_of_body_stream_noti">
+                                <img src="../app/view/content/image/teachers.png">{{ i.name }}
+                                {% if i.type == 1 %}
+                                (GV)
+                                {% elseif i.type == 0 %}
+                                (HS)
+                                {% endif %}
+                            </div>
+                            <div class="ngaydangthongbao">Posted on {{ i.datepost }}</div>
+                        </a>
+                        <div class="noidungthongbao">{{ i.information }}</div>
+                        {% endif %}
+                        <div id="{{ i.username }}{{ i.idnotice }}" class="collapse thongbao">
+                            <p class="titlehoibuon">Bình luận</p>
+                            {% for z in noticecmt %}
+                            {% for j in z[i.idnotice].data %}
+                            <div class="motthangsinhvien">
+                                <div class="caianhcuagiaovien">
+                                    <img src="../app/view/content/image/students.png">
+                                </div>
+                                <div class="student_cmt">
+                                    <label class="student1">{{ j.name }}
+                                        {% if j.type == 1 %}
+                                        (GV)
+                                        {% elseif j.type == 0 %}
+                                        (HS)
+                                        {% endif %}
+                                    </label>
+                                    <label class="haicham">:</label>
+                                    <p class="content_student1">{{ j.comment }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endfor %}
+                            <form action="notice" method="post" enctype="multipart/form-data">
+                                <input class="currentnotice" name="currentnotice" value="{{ i.idnotice }}">
+                                <button type="submit" class="btn btn-primary" name="viewnotice" id="viewnotice">
+                                    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>View detail</button>
+                            </form>
+                        </div>
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+
+            <div id="classwork" class="container tab-pane stream_stream fade">
+                <ul class="list-group">
+                    {% if type != 0 %}
+                    <li class="list-group-item newpost">
+                        <div class="text_with_buttonpost">
+                            <form action="add_classwork" method="post" enctype="multipart/form-data">
+                                <textarea type="text" class="text" oninput="auto_grow(this)" placeholder=" Share something with your class here.." name="classworkinfo"></textarea>
+                                <input type="file" name="file" multiple>
+                                <button type="submit" class="btn btn-success posttopdetail" name="addclasswork">Post</button>
+                            </form>
+                        </div>
+                    </li>
+                    {% endif %}
+
+                    <li class="list-group-item">
+                        {% for i in notice.data %}
+                        {% if i.link is not null %}
+                        {% set name = i.link|split("/") %}
+                        <a href="#{{ i.username }}{{ i.idnotice }}{{ i.idnotice }}" class="navbar-collapse card card-body body_stream_noti" data-toggle="collapse">
+                            <div class="text_of_body_stream_noti">
+                                <img src="../app/view/content/image/teachers.png">{{ i.name }}
+                                {% if i.type == 1 %}
+                                (GV)
+                                {% elseif i.type == 0 %}
+                                (HS)
+                                {% endif %}
+                            </div>
+                            <p>Post on {{ i.datepost }}</p>
+                            <p>Nội dung: {{ i.information }}</p>
+                            <a href="../{{ i.link }}">{{ name[name|length-1] }}</a>
+                        </a>
+                        {% endif %}
+                        <div id="{{ i.username }}{{ i.idnotice }}{{ i.idnotice }}" class="collapse thongbao">
+                            <p class="titlehoibuon">Bình luận</p>
+                            {% for z in noticecmt %}
+                            {% for j in z[i.idnotice].data %}
+                            <div class="motthangsinhvien">
+                                <div class="caianhcuagiaovien">
+                                    <img src="../app/view/content/image/students.png">
+                                </div>
+                                <div class="student_cmt">
+                                    <label class="student1">{{ j.name }}
+                                        {% if j.type == 1 %}
+                                        (GV)
+                                        {% elseif j.type == 0 %}
+                                        (HS)
+                                        {% endif %}
+                                    </label>
+                                    <label class="haicham">:</label>
+                                    <p class="content_student1">{{ j.comment }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endfor %}
+                            <form action="notice" method="post" enctype="multipart/form-data">
+                                <input class="currentnotice" name="currentnotice" value="{{ i.idnotice }}">
+                                <button type="submit" class="btn btn-primary" name="viewnotice" id="viewnoticec">
+                                    <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>View detail</button>
+                            </form>
+                        </div>
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+
+
+            <div id="people" class="container tab-pane fade"><br>
+                <div class="list-teachers">
+                    <div class="chucvu">
+                        <h4>Giảng viên</h4>
+                    </div>
+                    <br>
+                    {% for i in teacher.data %}
+                    <div class="name-teachers">
+                        <div class="teachers_name">
+                            <img src="../app/view/content/image/teachers.png"> {{ i.name }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <br>
+                </div>
+
+                <div class="list-classmates">
+                    <div class="chucvu">
+                        <h4 class="chucvusinhvien">Sinh viên</h4>
+                        {% if type != 0 %}
+                        <form action="add_student" method="post">
+                            <button name="btn-add-student" class="btn badge-light add_sinhvien_vao"><i class="fa fa-user-plus " aria-hidden="true"></i></button>
+                        </form>
+                        {% endif %}
+                    </div>
+                    <br>
+
+                    <div class="name-classmates_all">
+                        {% for i in student.data %}
+                        <div class="classmates_name">
+                            <img src="../app/view/content/image/students.png">{{ i.name }}
+                        </div>
+                        {% if type != 0 %}
+                        <form action="delete_student" method="post">
+                            <input class="currentstudentdelete" name="currentstudentdelete" id="currentstudentdelete" value="{{ i.student }}">
+                            <button type="submit" name="deletestudent" onclick="return confirm('Xác nhận xóa học sinh')" class="btn btn-light xoa_sinhvien"><i class="fa fa-user-times" aria-hidden="true"></i></button>
+                        </form>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                </div>
+                <br>
+
+            </div>
+
+
+            <!-- Files -->
+            <div id="files" class="container tab-pane fade"><br>
+                <div class="list-teachers">
+                    <div class="chucvu">
+                        <h4>Tài liệu</h4>
+                    </div>
+                    <br>
+                    {% for i in notice.data %}
+                    {% if i.link is not null %}
+                    {% set name = i.link|split("/") %}
+                    {% set file = name[name|length-1]|split(".") %}
+                    {% set file_type = file[file|length-1] %}
+                    {% if file_type == 'docx' or file_type == 'pdf'  %}
+                    <div class="name-teachers">
+                        <h4 class="name-teachers">
+                            <a href="../{{ i.link }}">{{ name[name|length-1] }}</a>
+                        </h4>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    <br>
+                </div>
+
+                <div class="list-classmates">
+                    <div class="chucvu">
+                        <h4>Labs</h4>
+                    </div>
+                    <br>
+                    {% for i in notice.data %}
+                    {% if i.link is not null %}
+                    {% set name = i.link|split("/") %}
+                    {% set file = name[name|length-1]|split(".") %}
+                    {% set file_type = file[file|length-1] %}
+                    {% if file_type == 'rar' or file_type == 'zip' %}
+                    <div class="name-classmates">
+                        <h4 class="name-classmates">
+                            <a href="../{{ i.link }}">{{ name[name|length-1] }}</a>
+                        </h4>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <br>
+                <div class="list-classmates">
+                    <div class="chucvu">
+                        <h4>Slides</h4>
+                    </div>
+                    <br>
+                    {% for i in notice.data %}
+                    {% if i.link is not null %}
+                    {% set name = i.link|split("/") %}
+                    {% set file = name[name|length-1]|split(".") %}
+                    {% set file_type = file[file|length-1] %}
+                    {% if file_type == 'ppt' or file_type == 'pptx' %}
+                    <div class="name-classmates">
+                        <h4 class="name-classmates">
+                            <a href="../{{ i.link }}">{{ name[name|length-1] }}</a>
+                        </h4>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="list-classmates">
+                    <div class="chucvu">
+                        <h4>Other</h4>
+                    </div>
+                    <br>
+                    {% for i in notice.data %}
+                    {% if i.link is not null %}
+                    {% set name = i.link|split("/") %}
+                    {% set file = name[name|length-1]|split(".") %}
+                    {% set file_type = file[file|length-1] %}
+                    {% if file_type != 'ppt' and file_type != 'pptx' and file_type != 'rar' and file_type != 'zip' and file_type != 'docx' and file_type != 'pdf' %}
+                    <div class="name-classmates">
+                        <h4 class="name-classmates">
+                            <a href="../{{ i.link }}">{{ name[name|length-1] }}</a>
+                        </h4>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

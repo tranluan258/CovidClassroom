@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <title>Login</title>
+
+</head>
+
+<body class="body_login">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-6 col-xs-12 row-container_login">
+                <form method="post" action="">
+                    <div>
+                        <h1 class="h1_login">Login</h1>
+                    </div>
+                    <div class="inputWithIcon inputWithIcon_login">
+                        <input type="text" placeholder="Username" name="username" value={{ user }}>
+                        <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="inputWithIcon inputWithIcon_login">
+                        <input type="password" placeholder="Password" name="password" value={{ pass }}>
+                        <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input_login" id="rememberMe" name="remember">
+                        <label class="form-check-label_login" for="rememberMe">Remember me</label>
+                    </div>
+
+
+                    <div class="loginbt_login">
+                        <button type="submit" class="btn btn-success btn-success_login my-2" name="login">Login</button>
+                    </div>
+
+
+                    <div class="signup_login">
+                        <label class="signuplabel_login">Create an account? </label>
+                        <a class="signupbt_login" href="signup">Sign Up!</a>
+                    </div>
+
+
+                    <div>
+                        <a class="txt_login" href="forgot">Forgot email or password?</a>
+                    </div>
+
+                    <div>
+                        <p class="text-danger" style="color: yellow">{{ message }}</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

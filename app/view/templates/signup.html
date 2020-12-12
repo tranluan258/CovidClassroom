@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    
+</head>
+
+<body class="body_signup">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-md-5 col-xs-12 row-container_signup">
+                <form method="post" action="">
+                    <div>
+                        <h2 class="h2_signup">Sign Up</h2>
+                    </div>
+                    <div class="inputWithIcon inputWithIcon_signup">
+                        <input type="text" placeholder="Username" name="username">
+                        <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <div class="inputWithIcon inputWithIcon_signup">
+                        <input type="password" placeholder="Password" name="password">
+                        <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <div class="inputWithIcon inputWithIcon_signup">
+                        <input type="text" placeholder="Your name" name="yourname">
+                        <i class="fa fa-user-o fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <div class="inputWithIcon inputWithIcon_signup">
+                        <input type="text" placeholder="Date of birth" name="birthday">
+                        <i class="fa fa-birthday-cake fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <div class="inputWithIcon inputWithIcon_signup">
+                        <input type="email" placeholder="Email" name="email">
+                        <i class="fa fa-envelope fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="inputWithIcon inputWithIcon_signup">
+                        <input type="text" placeholder="Phone Number" name="phone">
+                        <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input form-check-input_signup" id="rememberMe">
+                        <label class="form-check-label form-check-label_signup" for="rememberMe">Tôi đã đồng ý với các điều khoản đăng ký</label>
+                    </div>
+                    <div>
+                        {{ error }}
+                    </div>
+
+                    <div class="signup_signup">
+                        <button type="submit" class="btn btn-success btn-success_signup my-2" name="signup">Sign up</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

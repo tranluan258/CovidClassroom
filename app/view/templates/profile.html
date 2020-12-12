@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Profile</title>
+</head>
+<body class = "body_profile">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand">
+        <span class="menu-collapsed" class="title_profile_brand">Proflie</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+
+    <div class="collapse navbar-collapse" id="navbarAdmin">
+
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" class="profile_back_to_home" id="profile_back_to_home" href="../"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" class="profile_changepassword" id="profile_changepassword" href="change_password"><i class="fa fa-unlock" aria-hidden="true"></i>  Change password</a>
+                <div class="modal fade" id="myModal_changepassword_inprofile">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h1 class="text_note1_changepassword_inprofile">Change Password</h1>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <p>If you want to change your password. Please check your profile !</p>
+                                <form class="changepassword_form">
+                                    <div class="password_changepassword_inprofile">
+                                        <label class="label_password_changepassword_inprofile">Password:</label>
+                                        <input type="password" name="password_inprofile" class="form-control box_password_changepassword_inprofile" placeholder="Enter password . . .">
+                                    </div>
+                                    <div class="newpassword_changepassword">
+                                        <label class="label_newpassword_changepassword_inprofile">New password:</label>
+                                        <input type="password" name="new_password_inprofile" class="form-control" class="box_newpassword_changepassword_inprofile" placeholder="Enter new password . . .">
+                                    </div>
+                                    <div class="confirm_newpassword_changepassword">
+                                        <label class="label_confirm_newpassword_changepassword_inprofile">Confirm new password:</label>
+                                        <input type="password" name="confirm_new_password_inprofile" class="form-control"class="box_confirm_newpassword_changepassword_inprofile" placeholder="Confirm password . . .">
+                                    </div>
+                                    <div>
+                                        <danger message="Conf">danger danger danger</danger>
+                                    </div>
+                                </form>
+
+
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <div class="button_change_inprofile">
+                                    <button type="submit" name="button_changepassword_inprofile" class="btn btn-success button_changepassword_inprofile">Done</button>
+                                </div>
+                                <div class="cancel_changepassword_inprofile">
+                                    <button type="button" class="btn btn-danger button-cancle_profile_changepassword" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+
+
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-sm-10 col-xs-12 row-container_profile">
+
+            <div>
+                <div class="title_profile">Profile</div>
+                <div class="caikhung">
+                    <div class="form_profile">
+                        <div class="form_name_profile">
+                            <label class = "label_profile">Họ tên: </label>
+                            <label class = "name_profile">{{ data.yourname }}</label>
+                        </div>
+                        <div class="form_name_profile">
+                            <label class = "label_profile">Email: </label>
+                            <label class = "name_profile">{{ data.email }}</label>
+                        </div>
+                        <div class="form_name_profile">
+                            <label class = "label_profile">Số điện thoại: </label>
+                            <label class = "name_profile">{{ data.phone }}</label>
+                        </div>
+                        <div class="form_name_profile">
+                            <label class = "label_profile">Ngày sinh:</label>
+                            <label class = "name_profile">{{ data.birthday }}</label>
+                        </div>
+                        <div class="form_name_profile">
+                            <label class = "label_profile">Phân quyền: </label>
+                            {% if data.type == 0 %}
+                            <label class = "name_profile">Sinh viên</label>
+                            {% elseif data.type == 1 %}
+                            <label class = "name_profile">Giáo viên</label>
+                            {% else %}
+                            <label class = "name_profile">Admin</label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

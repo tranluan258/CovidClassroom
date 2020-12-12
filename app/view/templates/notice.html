@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Notice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body class = "body_detailnoti">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand">
+        <span class="menu-collapsed">Covid Classroom</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+
+    <div class="collapse navbar-collapse" id="navbarAdmin">
+
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" href="../"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" href="detail"><i class="fa fa-reply" aria-hidden="true"></i>  Back</a>
+            </li>
+        </ul>
+
+
+
+
+
+
+        <!-- Log out -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../account/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-sm-8 col-xs-12 detailnoti">
+            <ul class="list-group">
+                <div class="phandauthongbao">
+                    <li class="list-group-item quametmoiroi">
+                        <img src="../app/view/content/image/teachers.png" class="caianhgiaovienthongbao">
+                        <div class="kebencaihinhgiaovienthongbao">
+                            <div class="tieudethongbao">
+
+                                {{ notice.data[0].name }}
+                            </div>
+                            <div class="giangvienthongbao">
+                                {% if notice.data[0].type == 1 %}
+                                (GV)
+                                {% elseif notice.data[0].type == 0 %}
+                                (HS)
+                                {% endif %}
+                            </div>
+                            <div class="ngaythongbao">
+                                Posted on {{ notice.data[0].datepost }}
+                            </div>
+
+                            {%if notice.data[0].link is not null %}
+
+                            {% set name = notice.data[0].link|split("/") %}
+                            <div>
+                                <p><i class="fa fa-file" aria-hidden="true"></i> <a href="../{{ notice.data[0].link }}">{{ name[name|length-1] }}</a></p>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </li>
+                </div>
+                <div class="phanthanthongbao">
+                    <li class="list-group-item">
+                        <p>
+                            {{ notice.data[0].info }}
+                        </p>
+                        {% if notice.data[0].username == username or type != 0 %}
+                        <a href="update_notice" class="btn btn-light xoa_sinhvien"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <form action="delete_notice" method="post">
+                            <button type="submit" name="delete_notice" onclick="return confirm('Xác nhận xóa thông báo')" class="btn btn-light xoa_sinhvien"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        </form>
+                        {% endif %}
+                    </li>
+                </div>
+                <div class="phancomment">
+                    <li class="list-group-item">
+                        <div class="titlecomment">Bình luận</div>
+
+                        <br><br>
+                        {% for i in comment.data %}
+                        <div class="commented">
+                            <img src="../app/view/content/image/students.png" class="caianhcommenting">
+                            <div class="student_commented">
+                                <label class="studentoi">{{ i.name }}
+                                    {% if i.type == 1 %}
+                                    (GV)
+                                    {% elseif i.type == 0 %}
+                                    (HS)
+                                    {% endif %}
+                                </label>
+                                <label class="haichamoi">:</label>
+                                <p class="content_studentoi">{{ i.comment }}</p>
+                            </div>
+                            {% if type != 0 %}
+                            <form action="delete_comment" method="post">
+                                <input class="currentstudentdelete" name="currentcommentdelete" id="currentcommentdelete" value="{{ i.idcmt }}">
+                                <button type="submit" name="deletecomment" onclick="return confirm('Xác nhận xóa bình luận')" class="btn btn-light xoa_sinhvien"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            </form>
+                            {% endif %}
+                        </div>
+                        <br>
+                        {% endfor %}
+                        <div class="commenting">
+                            <img src="../app/view/content/image/students.png" class="caianhcommenting">
+                            <div class="commenting_of_student">
+                                <form action="add_comment" method="post" enctype="multipart/form-data">
+                                    <div class="cuoicung">
+                                        <textarea class="textboxcommenthihi" oninput="auto_grow(this)" placeholder="Your comment . . ." name="noticecomment"></textarea>
+                                        <button type="submit" class="btn btn-success cmtchovui" name="addcomment">Comment</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+
+                </div>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

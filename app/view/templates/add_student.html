@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Add student</title>
+    <script src="../main.js" ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body class = "body_addstudent">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand">
+        <span class="menu-collapsed">Covid Classroom</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+
+    <div class="collapse navbar-collapse" id="navbarAdmin">
+
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" href="../"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" href="detail"><i class="fa fa-reply" aria-hidden="true"></i>  Back</a>
+            </li>
+        </ul>
+
+
+
+
+
+        <!-- Log out -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../account/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-10 col-xs-12 addstudent">
+            <ul class="list-group">
+                <div class="phandauaddstudent">
+                    <li class="list-group-item otren">
+                        <div class="tuadeotren">
+                            <div class="tenlophoccanadd">
+                                Lớp: {{ subjectinfo.data[0].classname }}
+                            </div>
+                            <div class="tenmonhoccannadd">
+                                Môn: {{ subjectinfo.data[0].subjectname }}
+                            </div>
+                            <div class="phonghoccanadd">
+                                Phòng: {{ subjectinfo.data[0].room }}
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <div class="phanthanaddstudent">
+                    <li class="list-group-item">
+                        <div class="caituadedo">
+                            <label class="hotensinhviencanadd">Họ và tên</label>
+                            <label class="usernamesinhviencanadd">Username</label>
+                            <label class="emailsinhviencanadd">Email</label>
+                            <label class="trangthaisinhviencanadd">Trạng thái</label>
+                        </div>
+
+                        <ul class="listsinhvien">
+                            <form action="add_student_choose" method="post">
+                                {% for i in student.data %}
+                                <li class="list-group-item sinhvienadd">
+                                    <div class="caituade">
+                                        <label class="hotenadd">{{ i.name }}</label>
+                                        <label class="usernameadd">{{ i.username }}</label>
+                                        <label class="emailadd">{{ i.email }}</label>
+                                        <input type="checkbox" name="liststudent[]" value="{{ i.email }}">
+                                    </div>
+                                </li>
+                                {% endfor %}
+                                <br>
+                                <li><button class="add-student-choose" type="submit" name="add-student-choose"> Add </button></li>
+                            </form>
+                        </ul>
+
+                    </li>
+                </div>
+                <div class="phanthanaddstudent">
+                    <li class="list-group-item">
+                        <ul class="chonhetluon">
+                            <button onclick="selectAll()" class="chonhetluon">Select all</button>
+                            <button onclick="UnSelectAll()" class="bochonhetluon">Cancel</button>
+                        </ul>
+                    </li>
+                </div>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

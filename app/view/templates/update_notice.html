@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Update Notice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand">
+        <span class="menu-collapsed">Covid Classroom</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarAdmin">
+
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" href="../"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" href="notice"><i class="fa fa-reply" aria-hidden="true"></i>  Back</a>
+            </li>
+        </ul>
+        <!-- Log out -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../account/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="editinfroclass">
+    <form action="update_notice_info" method="post">
+        <h2 class="titleeditclass">Update notice</h2>
+        <div class="editclassrow">
+            <div class="editclass25">
+                <label class="labeleditclass" for="lname">Noi dung thong bao</label>
+            </div>
+            <div class="editclass75">
+                <textarea class="editnoticecontent" id="lname" name="update_notice">{{ notice.data[0].info }}</textarea>
+            </div>
+        </div>
+        <br>
+        <div class="editclassrow editnoticerowsave">
+            <button class="btn btn-success" type="submit" name="btn_update_notice">Save</button>
+        </div>
+    </form>
+</div>
+
+</body>
+
+</html>

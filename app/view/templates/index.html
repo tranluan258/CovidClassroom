@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Home page</title>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body class = "body_homepage">
+
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand">
+        <span class="menu-collapsed">Covid Classroom</span>
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarAdmin" aria-controls="navbarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+
+    <div class="collapse navbar-collapse" id="navbarAdmin">
+
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item dropdown d-sm-block d-lg">
+                <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Menu </a>
+                <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                    <a class="dropdown-item" href="account/profile">Profile</a>
+                </div>
+            </li>
+        </ul>
+
+        {% if type == 0 %}
+        <ul class="nav navbar-nav navbar-right " class="joinclass">
+            <li class="nav-item">
+                <a class="nav-link" href="#" id ="myBtn"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Join</a>
+                <!-- The Modal -->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Join Class</h4>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <p>Ask your teacher for the class code, then enter it here.</p>
+                                <form class="join_code" method="post" action="subject/join_code">
+
+                                    <input type="text" class="form-control" placeholder="Enter join code" name="join_code">
+                                    <button type="submit" class="btn btn-primary button-join-class" name="join">Join</button>
+                                </form>
+
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        {% elseif type == 1 %}
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" id ="myBtnaddnewclass">Add New Class</a>
+                <!-- The Modal -->
+                <div class="modal fade" id="myModaladdnewclass">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add New Class</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <form method="post" action="subject/add_subject">
+                                    <label>Class Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter your class name" name="classname">
+                                    <label>Subject Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter your subject name" name="subjectname">
+                                    <label>Room</label>
+                                    <input type="text" class="form-control" placeholder="Enter your class room" name="room">
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary button-addnewclass" name="addnewclass" id="addnewclass">Add</button>
+                                        <button type="button" class="btn btn-danger button-cancle" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        {% endif %}
+        {% if type == 2 %}
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" id ="myBtnaddnewclass">Add New Class</a>
+                <!-- The Modal -->
+                <div class="modal fade" id="myModaladdnewclass">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add New Class</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <form method="post" action="subject/add_subject">
+                                    <label>Class Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter your class name" name="classname">
+                                    <label>Subject Name</label>
+                                    <input type="text" class="form-control" placeholder="Enter your subject name" name="subjectname">
+                                    <label>Room</label>
+                                    <input type="text" class="form-control" placeholder="Enter your class room" name="room">
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary button-addnewclass" name="addnewclass" id="addnewclass">Add</button>
+                                        <button type="button" class="btn btn-danger button-cancle" data-dismiss="modal">Close</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <a class="nav-link" class="phanquyen" id="phanquyen" href="account/view_account"><i class="fa fa-users" aria-hidden="true"></i>  View</a>
+            </li>
+        </ul>
+        {% endif %}
+        <ul class="nav navbar-nav navbar-right ">
+            <li class="nav-item">
+                <span class="icon"><i class="fa fa-search"></i></span>
+                <input oninput="suggest(this.value)" type="search" class="box_search" id="search" placeholder="Search..." />
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="account/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="alert alert-dark alert-dismissible error_index" role="alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    {{ errorindex }}
+</div>
+
+<div class="container-fluid">
+    <div class="row justify-content-center parent-list">
+       {% for i in subject.data %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 row-container list-subject">
+            <form action="subject/detail" method="post">
+                <div class="subject_homepage">
+                    <div class="textsubject_homepage">
+                        <input class="currentcode" name="currentcode" id="currentcode" value="{{ i.code }}">
+                        <p>Tên lớp: {{ i.classname }}</p>
+                        <p>Môn học: {{ i.subjectname }}</p>
+                        <p>Giáo viên: {{ i.teachername }}</p>
+                        <p>Phòng học: {{ i.room }}</p>
+                    </div>
+                    <p> </p><br>
+                    <p> </p><br>
+                    <p> </p><br>
+                    <div class="btn_join_into_class">
+                        <button type="submit" class="btn btn-primary" name="joinintoclass" id="joinintoclass">
+                            <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>  Join Class</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+        </div>
+    <div class="row justify-content-center parent-search-list">
+
+    </div>
+    </div>
+
+
+</body>
+</html>
